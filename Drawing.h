@@ -238,15 +238,12 @@ void drawScene() {
     glTranslatef(0.0, 0.0, -7.0);
 
     glColor3f(0.0, 0.0, 0.3);
-    // Render the sky first
-    sky();
-
-    gamercar(); // draw the car
-
     setupLighting();
+    sky();
+    gamercar();
 
     glPushMatrix();
-    glTranslatef(0.0, 0.0, 0.0); // Move to the center of the triangle
+    // glTranslatef(0.0, 0.0, 0.0);
     glRotatef(80, -1.0, 0.0, 0.0);
 
     glPushMatrix();
