@@ -1,23 +1,43 @@
 #pragma once
+
 #include "Collision.h"
 #include "Lighting.h"
 #include "Settings.h"
 #include "Variables.h"
-#include <gl/gl.h>
+#include <bits/stdc++.h>
 #include <gl/glut.h>
-#include <iostream>
-#include <math.h>
-#include <sstream>
-#include <stdlib.h>
-#include <string.h>
-#include <string>
+
 #define STB_IMAGE_IMPLEMENTATION
-#define glGenerateMipmaps ;
+
 #include "stb_image.h"
-#include <gl/GL.h>
 
 using namespace std;
 void check(unsigned char *);
+
+GLuint loadTexture(const char *filename) {
+    int width, height, nrChannels;
+    unsigned char *data = stbi_load(filename, &width, &height, &nrChannels, 0);
+
+    GLuint textureID;
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_2D, textureID);
+
+    // Set wrapping/filtering
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    GLenum format = GL_RGB;
+    if (nrChannels == 4)
+        format = GL_RGBA;
+
+    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
+
+    glBindTexture(GL_TEXTURE_2D, 0);
+    stbi_image_free(data);
+    return textureID;
+}
 
 void gamercar() {
     glPushMatrix();
@@ -89,75 +109,22 @@ void gamercar() {
     glPopMatrix();
 }
 
-GLuint loadTexture(const char *filename) {
-    int width, height, nrChannels;
-    unsigned char *data = stbi_load(filename, &width, &height, &nrChannels, 0);
-
-    GLuint textureID;
-    glGenTextures(1, &textureID);
-    glBindTexture(GL_TEXTURE_2D, textureID);
-
-    // Set wrapping/filtering
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-    GLenum format = GL_RGB;
-    if (nrChannels == 4)
-        format = GL_RGBA;
-
-    glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
-
-    glBindTexture(GL_TEXTURE_2D, 0);
-    stbi_image_free(data);
-    return textureID;
-}
-
-void load(int imgnum) {
-    if (imgnum == 1) {
-        data1 = stbi_load("sky4.jpg", &width, &height, &nrChannels, 0);
-        check(data1);
-    }
-    else if (imgnum == 2) {
-        data1 = stbi_load("container.jpg", &width, &height, &nrChannels, 0);
-        check(data1);
-    }
-}
-
-void check(unsigned char *data) {
-    if (data) {
-        glGenTextures(1, &sky_texture);
-        glBindTexture(GL_TEXTURE_2D, sky_texture);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    }
-    else {
-        std::cout << "Failed to load texture" << std::endl;
-    }
-    stbi_image_free(data);
-}
-
 void sky() {
     glPushMatrix();
     glRotatef(_cameraAngle, 0.0, 1.0, 0.0); // Rotate the sky to match the camera angle
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, sky_texture);
-    glColor3ub(255, 255, 255); // Set color to white for the texture
+    glColor3ub(255, 255, 255); // white
 
     glBegin(GL_QUADS);
-    glTexCoord2f(0.0, 0.0);
+    glTexCoord2f(0, 0);
     glVertex3f(-12.0, 2.0, -8.0); // Bottom left (wider), raised
-    glTexCoord2f(10.0, 0.0);
+    glTexCoord2f(1, 0);
     glVertex3f(12.0, 2.0, -8.0); // Bottom right (wider), raised
-    glTexCoord2f(10.0, 5.0);
+    glTexCoord2f(0, 1);
     glVertex3f(10.0, 4.0, 8.0); // Top right, raised
-    glTexCoord2f(0.0, 5.0);
+    glTexCoord2f(1, 1);
     glVertex3f(-10.0, 4.0, 8.0); // Top left, raised
     glEnd();
 
@@ -282,57 +249,38 @@ void drawScene() {
 
     setupLighting();
 
-    glPushMatrix();              // Save the current state of transformations
+    glPushMatrix();
     glTranslatef(0.0, 0.0, 0.0); // Move to the center of the triangle
     glRotatef(80, -1.0, 0.0, 0.0);
 
     glPushMatrix();
     glTranslatef(0.0, crmove, 0.0);
-
-    /*glClearColor(0.0, 0.0, 0.0, 1.0);*/
-
     road();
-
     glPopMatrix();
+
     glPushMatrix();
     glTranslatef(0.0, crmove, 0.0);
-
     roadside();
-
     objectcube();
-
     GameScore();
-
     glPopMatrix();
 
     glPushMatrix();
-    /*glColor3ub(0, 0, 0);*/
     glTranslatef(5.52, 0.0, 2.0);
-
-    ostringstream cnvrt;
-    cnvrt << score; // Total Score
-    sprint(-4, -2.3, "Score: " + cnvrt.str());
+    sprint(-4, -2.3, "Score: " + to_string(score));
     glPopMatrix();
 
     glPushMatrix();
-    /*glColor3ub(0, 0, 0);*/
     glTranslatef(5.5, 0.0, 1.8);
-
-    ostringstream cnvrt2;
-    cnvrt2 << totalMeter; // Total distance traveled
-    sprint(-4, -2.4, "Distance Travel: " + cnvrt2.str());
+    sprint(-4, -2.4, "Distance Travel: " + to_string(totalMeter));
     glPopMatrix();
 
     glPushMatrix();
-    /*glColor3ub(0, 0, 0);*/
     glTranslatef(5.5, 0.0, 1.6);
-    ostringstream cnvrt3;
-    cnvrt3 << carspeed; // Car Speed
-    sprint(-4, -2.4, "Speed: " + cnvrt3.str());
+    sprint(-4, -2.4, "Speed: " + to_string(carspeed));
     glPopMatrix();
 
     glPopMatrix();
-    /*glClearColor(sky_red, sky_green, sky_blue, 1.0);*/
 
     if (collision()) {
         winner('a');

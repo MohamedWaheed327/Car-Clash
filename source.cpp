@@ -1,8 +1,6 @@
-﻿
-#include <bits/stdc++.h>
+﻿#include <bits/stdc++.h>
 
 #include <gl/glut.h>
-#include <gl/gl.h>
 
 #include "Reshape.h"
 #include "Controls.h"
@@ -15,15 +13,12 @@ using namespace std;
 void update(int value) {
 	crmove -= 0.1f;
 
-	// Check if total meter reaches 4000
 	if (totalMeter >= 4000) {
 		win('a'); // End the game
 		return;
 	}
 
-	glutPostRedisplay(); //Tell GLUT that the display has changed
-
-	//Tell GLUT to call update again in 25 milliseconds
+	glutPostRedisplay();
 	glutTimerFunc(25, update, 0);
 }
 
@@ -35,7 +30,7 @@ int main(int argc, char** argv) {
 	glutCreateWindow("Car Game");
 	initRendering();
 
-	sky_texture = loadTexture("sky4.jpg");
+	sky_texture = loadTexture("sky.jpg");
 
 	//Set handler functions
 	glutDisplayFunc(drawScene);

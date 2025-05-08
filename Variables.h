@@ -29,10 +29,7 @@ int roadlight = 50;
 float myLightPosition[4] = {3.0, 6.0, 5.0, 1.0};
 
 // Declare global variables to store mouse coordinates
-int mouseX = 0;
-int mouseY = 0;
-
-GLfloat UpwardsScrollVelocity = -1.0;
+int mouseX = 0, mouseY = 0;
 
 float rtri = 0;
 float _angle = 0.0;

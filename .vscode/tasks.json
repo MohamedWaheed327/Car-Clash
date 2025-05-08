@@ -8,8 +8,8 @@
             "args": [
                 "g++",
                 "-o",
-                "${fileBasenameNoExtension}.exe",
-                "${file}",
+                "source.exe",
+                "source.cpp",
                 "-I",
                 "C:/msys64/mingw64/include",
                 "-L",
@@ -18,7 +18,7 @@
                 "-lopengl32",
                 "-lglu32",
                 "&&",
-                "${fileBasenameNoExtension}.exe"
+                "source.exe"
             ],
             "presentation": {
                 "reveal": "never"

@@ -1,6 +1,6 @@
 #pragma once
 #define STB_IMAGE_IMPLEMENTATION
-#define glGenerateMipmaps ;
+
 #include "string"
 #include <gl/gl.h>
 #include <gl/glut.h>
@@ -34,7 +34,7 @@ bool GameScore() {
         score++;
         return true;
     }
-    // else 
+    // else
     {
         totalMeter++;
         // cout << "Total Meter: " << totalMeter << endl;
