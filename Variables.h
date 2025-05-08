@@ -7,7 +7,6 @@ int car_pos = 0;
 int car_speed = 45;
 
 GLuint sky_texture;
-int width, height, nrChannels;
 
 float obstacle_y = -3.3;
 

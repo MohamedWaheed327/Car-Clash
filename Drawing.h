@@ -107,7 +107,6 @@ void gamercar() {
 
 void sky() {
     glPushMatrix();
-    glRotatef(0, 0.0, 1.0, 0.0); // Rotate the sky to match the camera angle
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, sky_texture);
@@ -174,28 +173,28 @@ void roadside() {
 
 void objectcube() {
     // draw cubes with pattern -> R L L R
-    for (float zp = -20; zp < 400; zp += 40) {
+    for (float y = -20; y < 400; y += 40) {
         glPushMatrix();
         glColor3f(0, 0.5, 0);
-        glTranslatef(-.50, zp, -.1);
+        glTranslatef(-.50, y, -.1);
         glutSolidCube(.4);
         glPopMatrix();
 
         glPushMatrix();
         glColor3f(0, 0.5, 0);
-        glTranslatef(.50, zp + 10, -.1);
+        glTranslatef(.50, y + 10, -.1);
         glutSolidCube(.4);
         glPopMatrix();
 
         glPushMatrix();
         glColor3f(0, 0.5, 0);
-        glTranslatef(.50, zp + 20, -.1);
+        glTranslatef(.50, y + 20, -.1);
         glutSolidCube(.4);
         glPopMatrix();
 
         glPushMatrix();
         glColor3f(0, 0.5, 0);
-        glTranslatef(-.50, zp + 30, -.1);
+        glTranslatef(-.50, y + 30, -.1);
         glutSolidCube(.4);
         glPopMatrix();
     }
@@ -236,14 +235,13 @@ void drawScene() {
     glLoadIdentity();
     glRotatef(0, 0.0, 1.0, 0.0);
     glTranslatef(0.0, 0.0, -7.0);
-
     glColor3f(0.0, 0.0, 0.3);
+
     setupLighting();
     sky();
     gamercar();
 
     glPushMatrix();
-    // glTranslatef(0.0, 0.0, 0.0);
     glRotatef(80, -1.0, 0.0, 0.0);
 
     glPushMatrix();

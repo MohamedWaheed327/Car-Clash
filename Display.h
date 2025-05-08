@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Variables.h"
 #include <bits/stdc++.h>
 #include <gl/glut.h>
