@@ -41,7 +41,7 @@ GLuint loadTexture(const char *filename) {
 
 void gamercar() {
     glPushMatrix();
-    glTranslatef(xp, -1.0, 3.5);
+    glTranslatef(car_x, -1.0, 3.5);
 
     glPushMatrix();
     glRotatef(-10, -1.0, 0.0, 0.0);
@@ -111,7 +111,7 @@ void gamercar() {
 
 void sky() {
     glPushMatrix();
-    glRotatef(camera_angle, 0.0, 1.0, 0.0); // Rotate the sky to match the camera angle
+    glRotatef(0, 0.0, 1.0, 0.0); // Rotate the sky to match the camera angle
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, sky_texture);
@@ -238,7 +238,7 @@ void drawScene() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glRotatef(-camera_angle, 0.0, 1.0, 0.0);
+    glRotatef(0, 0.0, 1.0, 0.0);
     glTranslatef(0.0, 0.0, -7.0);
 
     glColor3f(0.0, 0.0, 0.3);

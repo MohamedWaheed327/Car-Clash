@@ -1,5 +1,4 @@
 #pragma once
-#define STB_IMAGE_IMPLEMENTATION
 
 #include "Variables.h"
 #include <bits/stdc++.h>
@@ -35,12 +34,12 @@ void keyboardspecial(int key, int x, int y) {
     switch (key) {
 
     case GLUT_KEY_RIGHT:
-        xp = .55;
+        car_x = .55;
         car_pos = 1;
         break;
 
     case GLUT_KEY_LEFT:
-        xp = -.55;
+        car_x = -.55;
         car_pos = 0;
         break;
 
