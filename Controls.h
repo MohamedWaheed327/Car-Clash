@@ -9,16 +9,14 @@
 void mouseClick(int button, int state, int x, int y) {
     if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
         // Left mouse click, decrease speed
-        if (carspeed < 100) {
-            crspeed -= 5;
-            carspeed += 5;
+        if (car_speed < 100) {
+            car_speed += 5;
         }
     }
     else if (button == GLUT_RIGHT_BUTTON && state == GLUT_DOWN) {
         // Right mouse click, increase speed
-        if (carspeed > 40) {
-            crspeed += 5;
-            carspeed -= 5;
+        if (car_speed > 40) {
+            car_speed -= 5;
         }
     }
 
@@ -28,7 +26,7 @@ void mouseClick(int button, int state, int x, int y) {
 void keyboard(unsigned char key, int x, int y) {
 #define ESC 27
     if (key == ESC) {
-        exit(1);
+        exit(0);
     }
 #undef ESC
 }
@@ -38,32 +36,24 @@ void keyboardspecial(int key, int x, int y) {
 
     case GLUT_KEY_RIGHT:
         xp = .55;
-        carpos = 1;
+        car_pos = 1;
         break;
 
     case GLUT_KEY_LEFT:
         xp = -.55;
-        carpos = 0;
+        car_pos = 0;
         break;
 
     case GLUT_KEY_UP:
-        if (crspeed > 5) {
-            crspeed -= 5;
-            carspeed += 5;
+        if (car_speed <= 95) {
+            car_speed += 5;
         }
-
-        else
-            crspeed = crspeed;
         break;
 
     case GLUT_KEY_DOWN:
-        if (crspeed < 60) {
-            crspeed += 5;
-            carspeed -= 5;
+        if (car_speed >= 45) {
+            car_speed -= 5;
         }
-
-        else
-            crspeed = crspeed;
         break;
 
     default:

@@ -51,7 +51,7 @@ void gamercar() {
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(0.0, tpx, 0.0);
+    glTranslatef(0.0, 0.15, 0.0);
     glRotatef(-10, -1.0, 0.0, 0.0);
     glScalef(1.0, .5, .5);
     glColor3f(0, 0, 0); // car's roof
@@ -111,7 +111,7 @@ void gamercar() {
 
 void sky() {
     glPushMatrix();
-    glRotatef(_cameraAngle, 0.0, 1.0, 0.0); // Rotate the sky to match the camera angle
+    glRotatef(camera_angle, 0.0, 1.0, 0.0); // Rotate the sky to match the camera angle
 
     glEnable(GL_TEXTURE_2D);
     glBindTexture(GL_TEXTURE_2D, sky_texture);
@@ -238,7 +238,7 @@ void drawScene() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-    glRotatef(-_cameraAngle, 0.0, 1.0, 0.0);
+    glRotatef(-camera_angle, 0.0, 1.0, 0.0);
     glTranslatef(0.0, 0.0, -7.0);
 
     glColor3f(0.0, 0.0, 0.3);
@@ -254,12 +254,12 @@ void drawScene() {
     glRotatef(80, -1.0, 0.0, 0.0);
 
     glPushMatrix();
-    glTranslatef(0.0, crmove, 0.0);
+    glTranslatef(0.0, car_move, 0.0);
     road();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(0.0, crmove, 0.0);
+    glTranslatef(0.0, car_move, 0.0);
     roadside();
     objectcube();
     GameScore();
@@ -277,13 +277,13 @@ void drawScene() {
 
     glPushMatrix();
     glTranslatef(5.5, 0.0, 1.6);
-    sprint(-4, -2.4, "Speed: " + to_string(carspeed));
+    sprint(-4, -2.4, "Speed: " + to_string(car_speed));
     glPopMatrix();
 
     glPopMatrix();
 
     if (collision()) {
-        winner('a');
+        terminate("GAME OVER");
     }
 
     glutSwapBuffers();

@@ -11,16 +11,16 @@
 using namespace std;
 
 void update(int value) {
-    crmove -= 0.1f;
+    car_move -= 0.1f;
 
     // End the game
     if (totalMeter >= 4000) {
-        win('a');
+        terminate("YOU WON");
         return;
     }
 
     glutPostRedisplay();
-    glutTimerFunc(25, update, 0);
+    glutTimerFunc(105 - car_speed, update, 0);
 }
 
 int main(int argc, char **argv) {
@@ -41,7 +41,7 @@ int main(int argc, char **argv) {
     glutSpecialFunc(keyboardspecial);
     glutMouseFunc(mouseClick);
 
-    // glutFullScreen();
+    glutFullScreen();
     glutMainLoop();
     return 0;
 }
