@@ -11,20 +11,20 @@
 using namespace std;
 
 bool GameScore() {
-    if (0 > (car_move - obstacle_y) && -1 < (car_move - obstacle_y) && car_pos == 0) {
+    if (0 > (car_y - obstacle_y) && -1 < (car_y - obstacle_y) && car_pos == 0) {
         score++;
     }
-    else if (0 > (car_move - (obstacle_y - 10)) && -1 < (car_move - (obstacle_y - 10)) && car_pos == 1) {
+    else if (0 > (car_y - (obstacle_y - 10)) && -1 < (car_y - (obstacle_y - 10)) && car_pos == 1) {
         score++;
     }
-    else if (0 > (car_move - (obstacle_y - 20)) && -1 < (car_move - (obstacle_y - 20)) && car_pos == 1) {
+    else if (0 > (car_y - (obstacle_y - 20)) && -1 < (car_y - (obstacle_y - 20)) && car_pos == 1) {
 
         score++;
     }
-    else if (0 > (car_move - (obstacle_y - 30)) && -1 < (car_move - (obstacle_y - 30)) && car_pos == 0) {
+    else if (0 > (car_y - (obstacle_y - 30)) && -1 < (car_y - (obstacle_y - 30)) && car_pos == 0) {
         score += 1;
     }
-    else if (0 > (car_move - (obstacle_y - 35)) && -1 < (car_move - (obstacle_y - 35)) && car_pos == 0) {
+    else if (0 > (car_y - (obstacle_y - 35)) && -1 < (car_y - (obstacle_y - 35)) && car_pos == 0) {
         score++;
         return true;
     }

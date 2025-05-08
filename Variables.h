@@ -2,8 +2,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-float car_x = -.55;
-float car_move = 4;
+float car_x = -.55, car_y = 4;
 int car_pos = 0;
 int car_speed = 45;
 
@@ -12,7 +11,5 @@ int width, height, nrChannels;
 
 float obstacle_y = -3.3;
 
-float view = 10.0;
-int score = 0;
-int totalMeter = 0;
+int score = 0, totalMeter = 0;
 string quote;

@@ -4,7 +4,6 @@
 #include <gl/glut.h>
 
 void RenderToDisplay() {
-    glTranslatef(0.0, 0.0, 0.0);
     glRotatef(-20, 1.0, 0.0, 0.0);
     glScalef(0.05, 0.05, 0.05);
 

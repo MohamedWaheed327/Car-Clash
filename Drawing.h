@@ -6,13 +6,9 @@
 #include "Variables.h"
 #include <bits/stdc++.h>
 #include <gl/glut.h>
-
 #define STB_IMAGE_IMPLEMENTATION
-
 #include "stb_image.h"
-
 using namespace std;
-void check(unsigned char *);
 
 GLuint loadTexture(const char *filename) {
     int width, height, nrChannels;
@@ -254,12 +250,12 @@ void drawScene() {
     glRotatef(80, -1.0, 0.0, 0.0);
 
     glPushMatrix();
-    glTranslatef(0.0, car_move, 0.0);
+    glTranslatef(0.0, car_y, 0.0);
     road();
     glPopMatrix();
 
     glPushMatrix();
-    glTranslatef(0.0, car_move, 0.0);
+    glTranslatef(0.0, car_y, 0.0);
     roadside();
     objectcube();
     GameScore();

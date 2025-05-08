@@ -11,7 +11,7 @@
 using namespace std;
 
 void update(int value) {
-    car_move -= 0.1f;
+    car_y -= 0.1f;
 
     // End the game
     if (totalMeter >= 4000) {
@@ -21,6 +21,16 @@ void update(int value) {
 
     glutPostRedisplay();
     glutTimerFunc(105 - car_speed, update, 0);
+}
+
+void initRendering() {
+    glEnable(GL_TEXTURE_2D);
+    glEnable(GL_DEPTH_TEST);
+    glEnable(GL_LIGHTING);
+    glEnable(GL_LIGHT0);
+    glEnable(GL_COLOR_MATERIAL);
+    glShadeModel(GL_SMOOTH);
+    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
 int main(int argc, char **argv) {
