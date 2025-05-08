@@ -2,14 +2,8 @@
 #define STB_IMAGE_IMPLEMENTATION
 
 #include "Variables.h"
-#include <gl/gl.h>
+#include <bits/stdc++.h>
 #include <gl/glut.h>
-#include <iostream>
-#include <math.h>
-#include <sstream>
-#include <stdlib.h>
-#include <string.h>
-#include <string>
 
 void reshape(int w, int h) {
     glViewport(0, 0, w, h);

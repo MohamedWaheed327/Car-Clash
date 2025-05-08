@@ -1,14 +1,9 @@
 #pragma once
 #include "Settings.h"
 #include "Variables.h"
-#include <gl/gl.h>
+#include <bits/stdc++.h>
 #include <gl/glut.h>
-#include <iostream>
-#include <math.h>
-#include <sstream>
-#include <stdlib.h>
-#include <string.h>
-#include <string>
+
 bool collision() {
     if (0 > (crmove - y11) && -1 < (crmove - y11) && carpos == 1) // right collision
     {

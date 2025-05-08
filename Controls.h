@@ -26,9 +26,11 @@ void mouseClick(int button, int state, int x, int y) {
 }
 
 void keyboard(unsigned char key, int x, int y) {
-    if (key == 27) {
+#define ESC 27
+    if (key == ESC) {
         exit(1);
     }
+#undef ESC
 }
 
 void keyboardspecial(int key, int x, int y) {

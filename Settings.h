@@ -1,16 +1,10 @@
 #pragma once
 #define STB_IMAGE_IMPLEMENTATION
 
-#include "string"
-#include <gl/gl.h>
+#include <bits/stdc++.h>
 #include <gl/glut.h>
-#include <iostream>
-#include <math.h>
-#include <sstream>
-#include <stdlib.h>
-#include <string.h>
-#include <string>
 
+#include "Reshape.h"
 #include "Display.h"
 #include "Time.h"
 #include "Variables.h"

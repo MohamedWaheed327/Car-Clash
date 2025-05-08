@@ -1,14 +1,7 @@
 #pragma once
-#include <iostream>
-#include <stdlib.h>
-#include <math.h>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <string.h>
-#include <gl/glut.h>
-#include <gl/gl.h>
 #include "Variables.h"
+#include <bits/stdc++.h>
+#include <gl/glut.h>
 
 void RenderToDisplay()
 {

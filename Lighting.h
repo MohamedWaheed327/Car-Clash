@@ -1,14 +1,8 @@
 #pragma once
-#include <iostream>
-#include <stdlib.h>
-#include <math.h>
-#include <iostream>
-#include <sstream>
-#include <string>
-#include <string.h>
-#include <gl/glut.h>
-#include <gl/gl.h>
 #include "Variables.h"
+#include <bits/stdc++.h>
+#include <gl/gl.h>
+#include <gl/glut.h>
 
 void setupLighting() {
 	glLightfv(GL_LIGHT0, GL_POSITION, myLightPosition);
