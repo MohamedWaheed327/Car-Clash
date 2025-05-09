@@ -2,8 +2,7 @@
 
 #include <gl/glut.h>
 
-#include "Controls.h"
-#include "Display.h"
+#include "keyboard_mouse_control.h"
 #include "Drawing.h"
 #include "Reshape.h"
 #include "Variables.h"
@@ -23,7 +22,7 @@ void update(int value) {
     glutTimerFunc(105 - car_speed, update, 0);
 }
 
-void initRendering() {
+void init() {
     glEnable(GL_TEXTURE_2D);
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_LIGHTING);
@@ -39,13 +38,13 @@ int main(int argc, char **argv) {
     glutInitWindowSize(800, 500);
     glutInitWindowPosition(100, 100);
     glutCreateWindow("Car Game");
-    initRendering();
+    init();
 
     sky_texture = loadTexture("sky.jpg");
 
     // Set handler functions
-    glutDisplayFunc(drawScene);
-    glutReshapeFunc(handleResize);
+    glutDisplayFunc(display);
+    glutReshapeFunc(reshape1);
     glutTimerFunc(25, update, 0);
     glutKeyboardFunc(keyboard);
     glutSpecialFunc(keyboardspecial);

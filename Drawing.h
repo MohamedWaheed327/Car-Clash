@@ -35,7 +35,7 @@ GLuint loadTexture(const char *filename) {
     return textureID;
 }
 
-void gamercar() {
+void car() {
     glPushMatrix();
     glTranslatef(car_x, -1.0, 3.5);
 
@@ -171,7 +171,7 @@ void roadside() {
     glEnd();
 }
 
-void objectcube() {
+void cube() {
     // draw cubes with pattern -> R L L R
     for (float y = -20; y < 400; y += 40) {
         glPushMatrix();
@@ -229,7 +229,7 @@ void road() {
     glPopMatrix();
 }
 
-void drawScene() {
+void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
@@ -239,7 +239,7 @@ void drawScene() {
 
     setupLighting();
     sky();
-    gamercar();
+    car();
 
     glPushMatrix();
     glRotatef(80, -1.0, 0.0, 0.0);
@@ -248,7 +248,7 @@ void drawScene() {
     glTranslatef(0.0, car_y, 0.0);
     road();
     roadside();
-    objectcube();
+    cube();
     glPopMatrix();
 
     // glPushMatrix();

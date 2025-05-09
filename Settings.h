@@ -3,7 +3,6 @@
 #include <bits/stdc++.h>
 #include <gl/glut.h>
 
-#include "Display.h"
 #include "Reshape.h"
 #include "Variables.h"
 using namespace std;
@@ -32,6 +31,24 @@ using namespace std;
 //     totalMeter++;
 // }
 
+void myDisplayFunction(void) {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glLoadIdentity();
+    gluLookAt(0, 30, 100, 0, 0, 0, 0, 1, 0);
+
+    glRotatef(-20, 1, 0, 0);
+    glScalef(0.05, 0.05, 0.05);
+
+    glPushMatrix();
+    glTranslatef(-296, 200, 0);
+    for (auto c : quote) {
+        glutStrokeCharacter(GLUT_STROKE_MONO_ROMAN, c); // Font
+    }
+    glPopMatrix();
+
+    glutSwapBuffers();
+}
+
 void terminate(string _quote) {
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(800, 500);
@@ -40,7 +57,7 @@ void terminate(string _quote) {
     quote = _quote;
 
     glutDisplayFunc(myDisplayFunction);
-    glutReshapeFunc(reshape);
+    glutReshapeFunc(reshape2);
     glutKeyboardFunc(keyboard);
     glutFullScreen();
     glutMainLoop();
