@@ -2,10 +2,10 @@
 
 #include <gl/glut.h>
 
-#include "keyboard_mouse_control.h"
-#include "Drawing.h"
+#include "Display.h"
 #include "Reshape.h"
 #include "Variables.h"
+#include "keyboard_mouse_control.h"
 
 using namespace std;
 

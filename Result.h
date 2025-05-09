@@ -4,6 +4,7 @@
 #include <gl/glut.h>
 
 #include "Reshape.h"
+#include "keyboard_mouse_control.h"
 #include "Variables.h"
 using namespace std;
 

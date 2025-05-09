@@ -2,7 +2,7 @@
 
 #include "Collision.h"
 #include "Lighting.h"
-#include "Settings.h"
+#include "Result.h"
 #include "Variables.h"
 #include <bits/stdc++.h>
 #include <gl/glut.h>
