@@ -247,19 +247,14 @@ void drawScene() {
     glPushMatrix();
     glTranslatef(0.0, car_y, 0.0);
     road();
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslatef(0.0, car_y, 0.0);
     roadside();
     objectcube();
-    GameScore();
     glPopMatrix();
 
-    glPushMatrix();
-    glTranslatef(5.52, 0.0, 2.0);
-    str_print(-4, -2.3, "Score: " + to_string(score));
-    glPopMatrix();
+    // glPushMatrix();
+    // glTranslatef(5.52, 0.0, 2.0);
+    // str_print(-4, -2.3, "Score: " + to_string(score));
+    // glPopMatrix();
 
     glPushMatrix();
     glTranslatef(5.5, 0.0, 1.8);
@@ -273,6 +268,8 @@ void drawScene() {
 
     glPopMatrix();
 
+    totalMeter++;
+    // GameScore();
     if (collision()) {
         terminate("GAME OVER");
     }
