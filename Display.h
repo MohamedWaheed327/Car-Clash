@@ -114,13 +114,13 @@ void sky() {
 
     glBegin(GL_QUADS);
     glTexCoord2f(0, 0);
-    glVertex3f(-12.0, 2.0, -8.0); // Bottom left (wider), raised
+    glVertex3f(-12.0, 2.0, -8.0); // Bottom left
     glTexCoord2f(1, 0);
-    glVertex3f(12.0, 2.0, -8.0); // Bottom right (wider), raised
+    glVertex3f(12.0, 2.0, -8.0); // Bottom right
     glTexCoord2f(0, 1);
-    glVertex3f(10.0, 4.0, 8.0); // Top right, raised
+    glVertex3f(10.0, 4.0, 8.0); // Top right
     glTexCoord2f(1, 1);
-    glVertex3f(-10.0, 4.0, 8.0); // Top left, raised
+    glVertex3f(-10.0, 4.0, 8.0); // Top left
     glEnd();
 
     glDisable(GL_TEXTURE_2D);
@@ -130,25 +130,24 @@ void sky() {
 
 void roadside() {
     // light pool
-    for (float z = -38; z < 400; z += 4) {
+    for (float y = -38; y < 400; y += 4) {
         glPushMatrix();
         glColor3ub(200, 200, 200);
-        glTranslatef(-1.20, z, .40);
+        glTranslatef(-1.20, y, .40);
         glScalef(.2, .2, 3);
-        glutSolidCube(.4); // horizontal shape
+        glutSolidCube(.4); // vertical
         glPopMatrix();
 
         glPushMatrix();
         glColor3ub(200, 200, 200);
-        glTranslatef(-.84, z, 1.0);
+        glTranslatef(-.84, y, 1.0);
         glScalef(2, .2, .2);
-        glutSolidCube(.4); // vertical shape
+        glutSolidCube(.4); // horizontal
         glPopMatrix();
 
         glPushMatrix();
         glColor3ub(255, 255, 255);
-        glTranslatef(-.44, z, 0.70);
-        // glScalef(2, .2, .2);
+        glTranslatef(-.44, y, 0.70);
         glutSolidCone(.2, .3, 15, 20); // light cone
         glPopMatrix();
     }
@@ -201,15 +200,15 @@ void cube() {
 }
 
 void road() {
-    for (float z = -10; z < 400; z += 1) {
+    for (float y = -10; y < 400; y += 1) {
         glPushMatrix();
         glColor3f(1, 1, 1);
         glBegin(GL_QUADS);
 
-        glVertex3f(-.03, z, 0);
-        glVertex3f(.03, z, 0);
-        glVertex3f(.03, z + .5, 0);
-        glVertex3f(-.03, z + .5, 0);
+        glVertex3f(-.03, y, 0);
+        glVertex3f(.03, y, 0);
+        glVertex3f(.03, y + .5, 0);
+        glVertex3f(-.03, y + .5, 0);
         glEnd();
         glPopMatrix();
     }
