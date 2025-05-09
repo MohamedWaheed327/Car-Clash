@@ -8,11 +8,10 @@ void RenderToDisplay() {
     glRotatef(-20, 1.0, 0.0, 0.0);
     glScalef(0.05, 0.05, 0.05);
 
-    int lenghOfQuote = quote.size();
     glPushMatrix();
-    glTranslatef(-(lenghOfQuote * 37), 200, 0.0);
-    for (int i = 0; i < lenghOfQuote; i++) {
-        glutStrokeCharacter(GLUT_STROKE_MONO_ROMAN, quote[i]); // Font
+    glTranslatef(-296, 200, 0.0);
+    for (auto c : quote) {
+        glutStrokeCharacter(GLUT_STROKE_MONO_ROMAN, c); // Font
     }
     glPopMatrix();
 }

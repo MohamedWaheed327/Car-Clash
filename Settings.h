@@ -8,7 +8,7 @@
 #include "Variables.h"
 using namespace std;
 
-bool GameScore() {
+void GameScore() {
     if (0 > (car_y - obstacle_y) && -1 < (car_y - obstacle_y) && car_pos == 0) {
         score++;
     }
@@ -21,13 +21,8 @@ bool GameScore() {
     else if (0 > (car_y - (obstacle_y - 30)) && -1 < (car_y - (obstacle_y - 30)) && car_pos == 0) {
         score++;
     }
-    else if (0 > (car_y - (obstacle_y - 35)) && -1 < (car_y - (obstacle_y - 35)) && car_pos == 0) {
-        score++;
-        return true;
-    }
 
     totalMeter++;
-    return false;
 }
 
 void terminate(string _quote) {
@@ -44,9 +39,9 @@ void terminate(string _quote) {
     glutMainLoop();
 }
 
-void sprint(float x, float y, string st) {
+void str_print(float x, float y, string st) {
     glRasterPos2f(x, y); // location to start printing text
-    for (int i = 0; i < st.length(); i++) {
-        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, st[i]);
+    for (auto c : st) {
+        glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, c);
     }
 }

@@ -258,17 +258,17 @@ void drawScene() {
 
     glPushMatrix();
     glTranslatef(5.52, 0.0, 2.0);
-    sprint(-4, -2.3, "Score: " + to_string(score));
+    str_print(-4, -2.3, "Score: " + to_string(score));
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(5.5, 0.0, 1.8);
-    sprint(-4, -2.4, "Distance Travel: " + to_string(totalMeter));
+    str_print(-4, -2.4, "Distance Travel: " + to_string(totalMeter));
     glPopMatrix();
 
     glPushMatrix();
     glTranslatef(5.5, 0.0, 1.6);
-    sprint(-4, -2.4, "Speed: " + to_string(car_speed));
+    str_print(-4, -2.4, "Speed: " + to_string(car_speed));
     glPopMatrix();
 
     glPopMatrix();
