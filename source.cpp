@@ -11,7 +11,7 @@
 using namespace std;
 
 void update(int value) {
-    car_y -= 0.1f;
+    car_y -= 0.1;
 
     // End the game
     if (totalMeter >= 4000) {

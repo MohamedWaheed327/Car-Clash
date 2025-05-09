@@ -1,12 +1,10 @@
 #pragma once
-#define STB_IMAGE_IMPLEMENTATION
 
 #include <bits/stdc++.h>
 #include <gl/glut.h>
 
 #include "Display.h"
 #include "Reshape.h"
-#include "Time.h"
 #include "Variables.h"
 using namespace std;
 
@@ -18,22 +16,18 @@ bool GameScore() {
         score++;
     }
     else if (0 > (car_y - (obstacle_y - 20)) && -1 < (car_y - (obstacle_y - 20)) && car_pos == 1) {
-
         score++;
     }
     else if (0 > (car_y - (obstacle_y - 30)) && -1 < (car_y - (obstacle_y - 30)) && car_pos == 0) {
-        score += 1;
+        score++;
     }
     else if (0 > (car_y - (obstacle_y - 35)) && -1 < (car_y - (obstacle_y - 35)) && car_pos == 0) {
         score++;
         return true;
     }
-    // else
-    {
-        totalMeter++;
-        return false;
-    }
-    return true;
+
+    totalMeter++;
+    return false;
 }
 
 void terminate(string _quote) {
@@ -45,6 +39,8 @@ void terminate(string _quote) {
 
     glutDisplayFunc(myDisplayFunction);
     glutReshapeFunc(reshape);
+    glutKeyboardFunc(keyboard);
+    glutFullScreen();
     glutMainLoop();
 }
 
