@@ -114,13 +114,13 @@ void sky() {
 
     glBegin(GL_QUADS);
     glTexCoord2f(0, 0);
-    glVertex3f(-12.0, 2.0, -8.0); // Bottom left
+    glVertex3f(-12.0 - 10, 2.0, -8.0); // Bottom left
     glTexCoord2f(1, 0);
-    glVertex3f(12.0, 2.0, -8.0); // Bottom right
+    glVertex3f(12.0 + 10, 2.0, -8.0); // Bottom right
     glTexCoord2f(0, 1);
-    glVertex3f(10.0, 4.0, 8.0); // Top right
+    glVertex3f(10.0 + 10, 4.0, 8.0); // Top right
     glTexCoord2f(1, 1);
-    glVertex3f(-10.0, 4.0, 8.0); // Top left
+    glVertex3f(-10.0 - 10, 4.0, 8.0); // Top left
     glEnd();
 
     glDisable(GL_TEXTURE_2D);
@@ -130,24 +130,24 @@ void sky() {
 
 void roadside() {
     // light pool
-    for (float y = -38; y < 400; y += 4) {
+    for (float y = -38 - 40; y < 400; y += 4) {
         glPushMatrix();
         glColor3ub(200, 200, 200);
-        glTranslatef(-1.20, y, .40);
+        glTranslatef(-1.20, y, .40 + 0.07);
         glScalef(.2, .2, 3);
         glutSolidCube(.4); // vertical
         glPopMatrix();
 
         glPushMatrix();
         glColor3ub(200, 200, 200);
-        glTranslatef(-.84, y, 1.0);
+        glTranslatef(-.84, y, 1.0 + 0.07);
         glScalef(2, .2, .2);
         glutSolidCube(.4); // horizontal
         glPopMatrix();
 
         glPushMatrix();
         glColor3ub(255, 255, 255);
-        glTranslatef(-.44, y, 0.70);
+        glTranslatef(-.44, y, 0.70 + 0.07);
         glutSolidCone(.2, .3, 15, 20); // light cone
         glPopMatrix();
     }
@@ -155,16 +155,16 @@ void roadside() {
     // Widened road sides
     glBegin(GL_QUADS);
     glColor3ub(0, 155, 20); // left side road
-    glVertex3f(-100.0, -10, 0);
-    glVertex3f(-1.0, -10, 0);
+    glVertex3f(-100.0, -10 - 10, 0);
+    glVertex3f(-1.0, -10 - 10, 0);
     glVertex3f(-1.0, 400, 0);
     glVertex3f(-100.0, 400, 0);
     glEnd();
 
     glBegin(GL_QUADS);
     glColor3ub(0, 155, 20); // right side road
-    glVertex3f(1.0, -10, 0);
-    glVertex3f(100.0, -10, 0);
+    glVertex3f(1.0, -10 - 10, 0);
+    glVertex3f(100.0, -10 - 10, 0);
     glVertex3f(100.0, 400, 0);
     glVertex3f(1.0, 400, 0);
     glEnd();
@@ -200,7 +200,7 @@ void cube() {
 }
 
 void road() {
-    for (float y = -10; y < 400; y += 1) {
+    for (float y = -100; y < 400; y += 1) {
         glPushMatrix();
         glColor3f(1, 1, 1);
         glBegin(GL_QUADS);
@@ -232,6 +232,11 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
+
+    gluLookAt(0, -1, 3.501,
+              0, -1, 3.5,
+              0, 1, 0);
+
     glRotatef(0, 0.0, 1.0, 0.0);
     glTranslatef(0.0, 0.0, -7.0);
     glColor3f(0.0, 0.0, 0.3);
