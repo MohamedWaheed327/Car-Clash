@@ -45,8 +45,8 @@ int main(int argc, char **argv) {
     glutDisplayFunc(display);
     glutReshapeFunc(reshape1);
     glutTimerFunc(25, update, 0);
-    glutKeyboardFunc(keyboard);
-    glutSpecialFunc(keyboardspecial);
+    glutKeyboardFunc(keyboard);       // esc
+    glutSpecialFunc(keyboardspecial); // up, down, right, left
     glutMouseFunc(mouseClick);
 
     glutFullScreen();

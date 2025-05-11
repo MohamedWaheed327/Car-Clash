@@ -201,11 +201,10 @@ void road() {
         glPushMatrix();
         glColor3f(1, 1, 1);
         glBegin(GL_QUADS);
-
-        glVertex3f(-.03, y, 0);
-        glVertex3f(.03, y, 0);
-        glVertex3f(.03, y + .5, 0);
-        glVertex3f(-.03, y + .5, 0);
+            glVertex3f(-.03, y, 0);
+            glVertex3f(.03, y, 0);
+            glVertex3f(.03, y + .5, 0);
+            glVertex3f(-.03, y + .5, 0);
         glEnd();
         glPopMatrix();
     }
@@ -230,7 +229,6 @@ void display() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-
     // glPushMatrix();
 
     // glTranslatef(0, -1, -5);
@@ -240,8 +238,8 @@ void display() {
     // glPopMatrix();
 
     float add = 0.9;
-    gluLookAt(0, -1 + add, 3.501-0.50 ,
-              0, -1 + add, 3.5 -0.50,
+    gluLookAt(0, -1 + add, 3.501 - 0.50,
+              0, -1 + add, 3.5 - 0.50,
               0, 1, 0);
 
     glRotatef(0, 0.0, 1.0, 0.0);
@@ -256,16 +254,11 @@ void display() {
     glRotatef(80, -1.0, 0.0, 0.0);
 
     glPushMatrix();
-    glTranslatef(0.0, car_y, 0.0);
-    road();
-    roadside();
-    cube();
+        glTranslatef(0.0, car_y, 0.0);
+        road();
+        roadside();
+        cube();
     glPopMatrix();
-
-    // glPushMatrix();
-    // glTranslatef(5.52, 0.0, 2.0);
-    // str_print(-4, -2.3, "Score: " + to_string(score));
-    // glPopMatrix();
 
     glPushMatrix();
     glTranslatef(5.5, 0.0, 1.8);
@@ -280,7 +273,6 @@ void display() {
     glPopMatrix();
 
     totalMeter++;
-    // GameScore();
     if (collision()) {
         terminate("GAME OVER");
     }

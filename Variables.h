@@ -13,7 +13,5 @@ struct AABB {
 
 GLuint sky_texture;
 
-float obstacle_y = -3.3;
-
-int /*score = 0,*/ totalMeter = 0;
+int totalMeter = 0;
 string quote;
