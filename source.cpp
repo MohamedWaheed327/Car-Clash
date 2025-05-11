@@ -29,7 +29,6 @@ void init() {
     glEnable(GL_LIGHT0);
     glEnable(GL_COLOR_MATERIAL);
     glShadeModel(GL_SMOOTH);
-    glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 }
 
 int main(int argc, char **argv) {
