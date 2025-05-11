@@ -233,8 +233,18 @@ void display() {
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
-    gluLookAt(0, -1, 3.501,
-              0, -1, 3.5,
+
+    // glPushMatrix();
+
+    // glTranslatef(0, -1, -5);
+    // glColor3f(1.0, 0.0, 0.0); // Red color
+    // glutSolidSphere(0.5, 50, 50);
+
+    // glPopMatrix();
+
+    float add = 0.9;
+    gluLookAt(0, -1 + add, 3.501-0.50 ,
+              0, -1 + add, 3.5 -0.50,
               0, 1, 0);
 
     glRotatef(0, 0.0, 1.0, 0.0);
