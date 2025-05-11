@@ -28,7 +28,6 @@ GLuint loadTexture(const char *filename) {
 
     glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
 
-    glBindTexture(GL_TEXTURE_2D, 0);
     stbi_image_free(data);
     return textureID;
 }
