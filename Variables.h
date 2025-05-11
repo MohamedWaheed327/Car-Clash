@@ -6,6 +6,11 @@ float car_x = -.55, car_y = 4;
 int car_pos = 0;
 int car_speed = 45;
 
+struct AABB {
+    float minX, minY, minZ;
+    float maxX, maxY, maxZ;
+};
+
 GLuint sky_texture;
 
 float obstacle_y = -3.3;
