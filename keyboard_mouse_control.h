@@ -35,12 +35,10 @@ void keyboardspecial(int key, int x, int y) {
 
     case GLUT_KEY_RIGHT:
         car_x = .55;
-        car_pos = 1;
         break;
 
     case GLUT_KEY_LEFT:
         car_x = -.55;
-        car_pos = 0;
         break;
 
     case GLUT_KEY_UP:

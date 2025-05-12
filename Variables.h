@@ -3,7 +3,6 @@
 using namespace std;
 
 float car_x = -.55, car_y = 4;
-int car_pos = 0;
 int car_speed = 45;
 
 struct AABB {

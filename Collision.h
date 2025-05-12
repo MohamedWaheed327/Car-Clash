@@ -48,7 +48,8 @@ bool collision() {
             {-0.50f, y},
             {+0.50f, y + 10},
             {+0.50f, y + 20},
-            {-0.50f, y + 30}};
+            {-0.50f, y + 30}
+        };
         for (auto &pos : cubes) {
             AABB box = getCubeAABB(pos.first, pos.second + car_y, -0.1f); // <--- ADD car_y
             if (intersectAABB(carBox, box)) return true;

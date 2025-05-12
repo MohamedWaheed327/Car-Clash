@@ -236,7 +236,6 @@ void display() {
     // glutSolidSphere(0.5, 50, 50);
 
     // glPopMatrix();
-
     float add = 0.9;
     gluLookAt(0, -1 + add, 3.501 - 0.50,
               0, -1 + add, 3.5 - 0.50,
